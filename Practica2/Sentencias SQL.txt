@@ -1,0 +1,36 @@
+//Crear base de datos cerveza
+CREATE DATABASE Cerveza;
+
+//Consultar las bases de datos creadas
+SHOW DATABASES;
+
+//Usar base de datos creada
+USES Cerveza;
+
+//Crear una tabla Cerveza
+CREATE TABLE cerveza(
+id_cerveza INT
+	PRIMARY KEY (id_cerveza)
+	FOREIGN KEY (id_categoria) REFERENCEs Categorias(id_categoria)
+)
+
+//Crear una tabla Categoria
+CREATE TABLE cerveza(
+id_categoria INT,
+Nombre_Categoria,
+	PRIMARY KEY (id_categoria)
+)
+
+//Crear una tabla SubCategoria
+CREATE TABLE cerveza(
+id_Subcategoria INT,
+Nombre_SubCategoria,
+	PRIMARY KEY (id_Subcategoria)
+)
+
+//Crear una tabla MateriasPrimas
+CREATE TABLE cerveza(
+id_MateriasPrimas INT,
+Nombre_MateriasPrimas,
+	PRIMARY KEY (MateriasPrimas)
+)
