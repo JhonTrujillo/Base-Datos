@@ -1,103 +1,84 @@
-//Crear base de datos cerveza
 CREATE DATABASE Cerveza;
+CREATE TABLE categoria (
+    -> id_categoria INT PRIMARY KEY AUTO_INCREMENT,
+    -> nombre_categoria VARCHAR (255) NOT NULL,
+    -> detalle_categoria VARCHAR (255) NOT NULL);
 
-//Consultar las bases de datos creadas
-SHOW DATABASES;
+CREATE TABLE cerveza (
+    -> id_cerveza INT PRIMARY KEY AUTO_INCREMENT,
+    -> nombre_cerveza VARCHAR (255) NOT NULL,
+    -> detalle_cerveza VARCHAR (255) NOT NULL,
+    -> id_categoria INT NOT NULL,
+    -> FOREIGN KEY(id_categoria) REFERENCES categoria(id_categoria)
+    -> );
 
-//Usar base de datos creada
-USE Cerveza;
+CREATE TABLE materia_prima (
+    -> id_materia_prima INT PRIMARY KEY AUTO_INCREMENT,
+    -> nombre_materia_prima VARCHAR (255) NOT NULL,
+    -> detalle_materia_prima VARCHAR (255) NOT NULL);
 
-//Crear una tabla Cerveza
-CREATE TABLE cerveza(
-idcerveza INT PRIMARY KEY AUTO_INCREMENT,
-nombre varchar(255) NOT NULL,
-detalle varchar(255) NOT NULL
-);
+CREATE TABLE cerveza_materia_prima (
+    -> id_cerveza_materia_prima INT PRIMARY KEY AUTO_INCREMENT,
+    -> id_materia_prima INT NOT NULL,
+    -> id_cerveza INT NOT NULL,
+    -> cantidad_materia_prima DECIMAL(10,2) NOT NULL,
+    -> unidad_materia_prima VARCHAR (30) NOT NULL,
+    -> FOREIGN KEY (id_materia_prima) REFERENCES materia_prima (id_materia_prima),
+    -> FOREIGN KEY (id_cerveza) REFERENCES cerveza (id_cerveza)
+    -> );
 
-//Crear una tabla Categoria
-CREATE TABLE categoria(
-idcategoria INT PRIMARY KEY AUTO_INCREMENT,
-nombre varchar(255) NOT NULL,
-detalle varchar(255) NOT NULL
-);
+CREATE TABLE tipo (
+    -> id_tipo INT PRIMARY KEY AUTO_INCREMENT,
+    -> nombre_tipo VARCHAR (255) NOT NULL);
 
-//Crear una tabla Tipo
-CREATE TABLE tipo(
-idtipo INT PRIMARY KEY AUTO_INCREMENT,
-nombre varchar(255) NOT NULL
-);
-	
+CREATE TABLE tipo_categoria (
+    -> id_tipo_categoria INT PRIMARY KEY AUTO_INCREMENT,
+    -> id_tipo INT NOT NULL,
+    -> id_categoria INT NOT NULL,
+    -> FOREIGN KEY (id_tipo) REFERENCES tipo (id_tipo),
+    -> FOREIGN KEY (id_categoria) REFERENCES categoria (id_categoria)
+    -> );
 
-//Crear una tabla MateriaPrima
-CREATE TABLE MateriaPrima(
-idmateriaprima INT PRIMARY KEY AUTO_INCREMENT,
-nombre varchar(255) NOT NULL,
-detalle varchar(255) NOT NULL
-);
+// INSERCIÓN DE REGISTROS EN LAS TABLAS.
 
-//Agregar llave foranea idcategoria a Tabla cerveza
-ALTER TABLE cerveza ADD COLUMN idcategoria INT;
-ALTER TABLE cerveza ADD FOREIGN KEY (idcategoria) REFERENCES categoria(idcategoria);
+INSERT INTO categoria (id_categoria, nombre_categoria, detalle_categoria) VALUES
+    -> (1, 'Lagers', 'detalle_1'),
+    -> (2, 'Ales', 'detalle_2');
 
-//Crear tabla intermedia tipo_categoria
-CREATE TABLE tipo_categoria(
-idtipo_categoria INT PRIMARY KEY AUTO_INCREMENT
-);
+INSERT INTO tipo (id_tipo, nombre_tipo) VALUES
+    -> (100, 'Dark'),
+    -> (101, 'Pale'),
+    -> (102, 'Bocks'),
+    -> (103, 'Stouts'),
+    -> (104, 'Porters'),
+    -> (105, 'Belgians'),
+    -> (106, 'Sours');
 
-//Agregar llaves foraneas idtipo, idcategoria a tabla tipo_categoria
-ALTER TABLE tipo_categoria ADD COLUMN idtipo INT;
-ALTER TABLE tipo_categoria ADD FOREIGN KEY (idtipo) REFERENCES tipo(idtipo);
+INSERT INTO materia_prima (
+    -> id_materia_prima,
+    -> nombre_materia_prima,
+    -> detalle_materia_prima) VALUES
+    -> (200, 'agua', 'detalle_agua'),
+    -> (201, 'levadura', 'detalle_levadura'),
+    -> (202, 'lúpulo', 'detalle_lupulo'),
+    -> (203, 'malta', 'detalle_malta');
 
-ALTER TABLE tipo_categoria ADD COLUMN idcategoria INT;
-ALTER TABLE tipo_categoria ADD FOREIGN KEY (idcategoria) REFERENCES categoria(idcategoria);
+INSERT INTO cerveza (id_cerveza, nombre_cerveza, detalle_cerveza, id_categoria)VALUES
+    -> (300, 'poker', 'detalle_poker', 1),
+    -> (301, 'Aguila', 'detalle_aguila', 2),
+    -> (302, 'Light', 'detalle_light', 1),
+    -> (303, 'Redds', 'detalle_redds', 2);
 
-//Crear tabla intermedia cerveza_materiaprima(
-CREATE TABLE cerveza_materiaprima(
-idcerveza_materiaprima INT PRIMARY KEY AUTO_INCREMENT,
-cantidad varchar(255) NOT NULL,
-unidad varchar(255) NOT NULL
-);
-
-
-//Agregar llaves foraneas idcerveza, idmateriaprima a tabla cerveza_materiaprima
-ALTER TABLE cerveza_materiaprima ADD COLUMN idcerveza INT;
-ALTER TABLE cerveza_materiaprima ADD FOREIGN KEY (idcerveza) REFERENCES cerveza(idcerveza);
-
-ALTER TABLE cerveza_materiaprima ADD COLUMN idmateriaprima INT;
-ALTER TABLE cerveza_materiaprima ADD FOREIGN KEY (idmateriaprima) REFERENCES MateriaPrima(idmateriaprima);
-
-//ver las tablas creadas anteriormente
-show tables;
-
-//insertar registros en tabla Categoria
-INSERT INTO categoria(idcategoria, nombre, detalle)
-VALUES (1, "lagers", "" );
-
-INSERT INTO Categoria(idcategoria, nombre,detalle)
-VALUES (2, "ales", "");
-
-//insertar registros en tabla tipo
-INSERT INTO tipo(idtipo, nombre)
-VALUES (1, "dark");
-
-INSERT INTO tipo(idtipo, nombre)
-VALUES (2, "pales");
-
-INSERT INTO tipo(idtipo, nombre)
-VALUES (3, "bocks");
-
-INSERT INTO tipo(idtipo, nombre)
-VALUES (4, "stouts");
-
-INSERT INTO tipo(idtipo, nombre)
-VALUES (5, "porters");
-
-INSERT INTO tipo(idtipo, nombre)
-VALUES (6, "belgians");
-
-INSERT INTO tipo(idtipo, nombre)
-VALUES (7, "sours");
-
+INSERT INTO tipo_categoria
+    -> (id_tipo_categoria, id_tipo, id_categoria) VALUES
+    -> (400, 100, 1),
+    -> (401, 101, 1),
+    -> (402, 102, 1),
+    -> (403, 103, 2),
+    -> (404, 104, 2),
+    -> (405, 105, 2),
+    -> (406, 106, 2),
+    -> (407, 101, 2);
 
 
 
