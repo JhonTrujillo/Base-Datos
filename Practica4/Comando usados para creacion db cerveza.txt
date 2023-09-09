@@ -1,0 +1,180 @@
+/// Crea BaseDatos en mongodb ///
+use cerveza
+
+/// Crear Coleccion ///
+db.createCollection("cerveza")
+
+/// insert datos en coleccion cerveza ///
+
+db.cerveza.insert({
+"nombre": "",
+"detalle": ""
+})
+
+
+/// Crear Coleccion ///
+db.createCollection("categoria")
+
+/// insert datos en coleccion categoria ///
+
+db.categoria.insert([
+{"nombre": "lagers",
+"detalle": "Fermentacion de 2 - 6 meses",
+"precio": "13.4"
+},
+{"nombre": "ales",
+"detalle": "Fermentacion 8 dias",
+"precio": "12.5"
+},
+{"nombre": "hibrida",
+"detalle": "Fermentacion Expontanea",
+"precio": "10.2"
+}
+])
+
+/// Crear Coleccion ///
+db.createCollection("tipo")
+
+/// insert datos en coleccion tipo ///
+
+db.tipo.insert([
+{
+"nombre": "dark"
+},
+{"nombre": "pales"
+},
+{"nombre": "bocks"
+},
+{"nombre": "stouts"
+},
+{"nombre": "porters"
+},
+{"nombre": "belgians"
+},
+{"nombre": "sours"
+}
+])
+
+/// Crear Coleccion ///
+db.createCollection("materiaprima")
+
+/// insert datos en coleccion materiaprima ///
+
+db.materiaprima.insert([
+{
+"nombre": "malta pale",
+"detalle": "cerveza ales",
+"cantidad": "100000 gr"
+},
+{
+"nombre": "malta cristal",
+"detalle": "cerveza ales",
+"cantidad": "100000gr"
+},
+{
+"nombre": "lupulo challenger",
+"detalle": "cerveza ales",
+"cantidad": "10000gr"
+},
+{
+"nombre": "lupulo golding",
+"detalle": "cerveza ales",
+"cantidad": "10000gr"
+},
+{
+"nombre": "malta viena",
+"detalle": "cerveza lager",
+"cantidad": "100000gr"
+},
+{
+"nombre": "malta munich",
+"detalle": "cerveza lager",
+"cantidad": "100000gr"
+},
+{
+"nombre": "malta carapils",
+"detalle": "cerveza lager - hibrida",
+"cantidad": "100000gr"
+},
+{
+"nombre": "lupulo perle",
+"detalle": "cerveza lager",
+"cantidad": "10000gr"
+},
+{
+"nombre": "malta pilsner",
+"detalle": "cerveza hibrida",
+"cantidad": "100000gr"
+},
+{
+"nombre": "lupulo spal",
+"detalle": "cerveza hibrida",
+"cantidad": "10000gr"
+},
+{
+"nombre": "lupulo tettnang",
+"detalle": "cerveza hibrida",
+"cantidad": "10000gr"
+},
+{
+"nombre": "agua",
+"detalle": "cerveza ales - lager - hibrida",
+"cantidad": "1000lt"
+},
+{
+"nombre": "levadura",
+"detalle": "cerveza ales - lager - hibrida",
+"cantidad": "10000gr"
+}
+])
+
+
+/// Crear Coleccion ///
+db.createCollection("produccion")
+
+/// insert datos en coleccion produccion ///
+
+db.produccion.insert([
+{
+"nombre": "ales",
+"malta pale": "4300gr",
+"malta cristal": "95gr",
+"lupulo challenger":"35gr",
+"lupulo golding":"41gr",
+"levadura":"200gr",
+"agua":"27lt",
+},
+{
+"nombre": "lager",
+"malta viena": "4000gr",
+"malta munich": "800gr",
+"malta carapils": "750gr",
+"malta cristal": "100gr",
+"lupulo perle":"27gr",
+"lupulo golding":"41gr",
+"levadura":"200gr",
+"agua":"27lt"
+},
+{
+"nombre": "hibrida",
+"malta pilsner": "4000gr",
+"malta carapils": "500gr",
+"lupulo spal":"44gr",
+"lupulo tettnang":"66gr",
+"levadura":"200gr",
+"agua":"27lt"
+}
+])
+
+/// Crear Coleccion ///
+db.createCollection("venta")
+
+db.venta.insert(
+{
+"cajamenor":"100",
+})
+
+
+
+
+

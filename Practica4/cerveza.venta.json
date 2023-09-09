@@ -1,0 +1,11 @@
+[{
+  "_id": {
+    "$oid": "64fca70d2a6c3c128897af93"
+  },
+  "base en caja": "100",
+  "cantidad ales": "25",
+  "cantidad lager": "60",
+  "candidad hibrida": "33",
+  "venta total": "1453.1",
+  "venta total + base": "1553.1"
+}]

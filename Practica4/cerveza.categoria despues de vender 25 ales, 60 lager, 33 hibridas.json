@@ -1,0 +1,27 @@
+[{
+  "_id": {
+    "$oid": "64fca43c2a6c3c128897af79"
+  },
+  "nombre": "lagers",
+  "detalle": "Fermentacion de 2 - 6 meses",
+  "precio": "13.4",
+  "cantidad disponible": "55"
+},
+{
+  "_id": {
+    "$oid": "64fca43c2a6c3c128897af7a"
+  },
+  "nombre": "ales",
+  "detalle": "Fermentacion 8 dias",
+  "precio": "12.5",
+  "cantidad disponible": "70"
+},
+{
+  "_id": {
+    "$oid": "64fca43c2a6c3c128897af7b"
+  },
+  "nombre": "hibrida",
+  "detalle": "Fermentacion Expontanea",
+  "precio": "10.2",
+  "cantidad disponible": "27"
+}]
